@@ -1,35 +1,36 @@
 export const createUserValidationSchema = {
     username: {
-        isLenght: {
+        isLength: {  // "isLength" olmalı
             options: {
-                min:5,
-                max:32
+                min: 5,
+                max: 32
             },
-            errorMessage:"Username must be at least 5 characters with a max of 20 characters"
+            errorMessage: "Username must be at least 5 characters with a max of 32 characters"  // 32 karakter olmalı
         },
         notEmpty: {
             errorMessage: "Username cannot be empty"
         },
-        isString: {
-            errorMessage: "Username must be string"
+        isString: {  // Eğer string kontrolü yapmak isterseniz kullanılabilir
+            errorMessage: "Username must be a string"
         },
     },
-    age:{
-        isInt:{
-            options:{
-                min:0,
-                max:99
+    age: {
+        isInt: {  // "isInt" zaten yaş için doğru bir validasyon
+            options: {
+                min: 0,
+                max: 99
             },
-            errorMessage:"age must be in 0-99 range"
+            errorMessage: "Age must be in 0-99 range"
         },
         notEmpty: {
-            errorMessage: "age must not be empty"
+            errorMessage: "Age must not be empty"
         },
-        isEAN:{
-            errorMessage:"age must not be null"
+        isInt: {  // "isEAN" yerine "isInt" kullanılmalı
+            errorMessage: "Age must be an integer"
         }
     }
 };
+
 
 export const getUserValidationSchema = {
     filter:{
