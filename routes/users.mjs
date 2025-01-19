@@ -6,6 +6,16 @@ import { mockUsers} from "../utils/constants.mjs";
 
 const router = Router();
 
+
+router.get("/",(request,response) => {
+    console.log(request.session);
+    console.log(request.session.id);
+    request.session.visited = true;
+    response.cookie("hello","world",{maxAge:60000 * 60,signed:true});
+    response.status(201).send({msg:"Hello"});
+});
+
+
 router.get("/api/users",checkSchema(getUserValidationSchema),loggingMiddleware,(request,response) => { 
     const result = validationResult(request);
     console.log(result); 
