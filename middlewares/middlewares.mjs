@@ -6,10 +6,7 @@ export const loggingMiddleware = (request,response,next) => {
 }
 
 export const resolveIndexByUserId = (request,response,next) => { // Middleware Type 3
-    const{
-        body,
-        params: {id},
-    } = request;
+     const { id } = req.params;
     const parsedId = parseInt(id);
     if(isNaN(parsedId)) return response.sendStatus(400);
     const findUserIndex = mockUsers.findIndex((user) => user.id === parsedId);

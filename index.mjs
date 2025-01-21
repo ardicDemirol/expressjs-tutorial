@@ -4,8 +4,21 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
 import "./strategies/local-strategy.mjs";
+import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
 
 const app = express();
+dotenv.config(); 
+
+mongoose.connect(process.env.DB_URI)
+    .then(() => {
+        console.log("Connected to Database");
+    })
+    .catch(() => {
+        console.log("Connection Failed");
+    });
+
 
 app.use(express.json());
 app.use(cookieParser("helloworld"));
